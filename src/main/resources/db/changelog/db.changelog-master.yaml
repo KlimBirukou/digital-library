@@ -1,0 +1,22 @@
+databaseChangeLog:
+  - changeSet:
+      id: enable-pgcrypto
+      author: Klim Birukou <manulc0rparation@gmail.com>
+      changes:
+        - sql:
+            sql: CREATE EXTENSION IF NOT EXISTS "pgcrypto";
+
+  - changeSet:
+      id: create_user_table
+      author: Klim Birukou <manulc0rparation@gmail.com>
+      changes:
+        - createTable:
+            tableName: user
+            columns:
+              - column:
+                  name: id
+                  type: uuid
+                  defaultValueComputed: gen_random_uuid()
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: user_pkey
