@@ -1,0 +1,10 @@
+# OpenAPI Generator Ignore
+pom.xml
+README.md
+.openapi-generator-ignore
+**/OpenAPI2SpringBoot.java
+**/RFC3339DateFormat.java
+src/main/resources/openapi.yaml
+src/main/resources/application.properties
+src/main/java/com/example/digital_library/OpenApiGeneratorApplication.java
+src/test/java/com/example/digital_library/OpenApiGeneratorApplicationTests.java

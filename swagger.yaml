@@ -1,0 +1,31 @@
+openapi: 3.0.5
+
+info:
+  title: Digital Library API
+  version: 0.0.1
+  description: Digital library application.
+
+tags:
+  - name: Greeting
+    description: Hello world related endpoint
+
+paths:
+  /greeting:
+    get:
+      tags:
+        - Greeting
+      summary: Return hello world message
+      responses:
+        '200':
+          description: Hello world message
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GreetingResponse'
+
+components:
+  schemas:
+    GreetingResponse:
+      title: GreetingResponse
+      type: string
+      example: Hello World
