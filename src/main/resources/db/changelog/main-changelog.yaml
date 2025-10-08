@@ -1,4 +1,7 @@
 databaseChangeLog:
   - include:
+      file: changelog_init-organization.yaml
+      relativeToChangeLogFile: true
+  - include:
       file: changelog_init-user.yaml
       relativeToChangeLogFile: true
