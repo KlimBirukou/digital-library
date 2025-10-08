@@ -14,6 +14,7 @@ import java.util.UUID;
 @NoArgsConstructor
 @Accessors(chain = true)
 public final class User {
+
     private UUID userId;
     private String name;
     private UUID organizationId;

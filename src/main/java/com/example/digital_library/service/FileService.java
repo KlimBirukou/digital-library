@@ -17,7 +17,8 @@ public class FileService {
                 .filter(user -> orgUid.equals(user.getOrganizationId()))
                 // TODO: do a normal check
                 .map(user -> List.of("el1", "el2"))
-                // TODO: add normal error handling
+                // TODO: add normal error handling 404 response
+                // TODO: 404 response if user not exist
                 .orElseGet(List::of);
     }
 }
