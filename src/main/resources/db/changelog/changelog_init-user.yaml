@@ -17,3 +17,25 @@ databaseChangeLog:
                   type: varchar(255)
             remarks: Create table for storing users
             tableName: dl_user
+  - changeSet:
+      id: 2025-10-08-01
+      author: Klim Birukou <manulc0rparation@gmail.com>
+      changes:
+        - addColumn:
+            tableName: dl_user
+            columns:
+              - column:
+                  name: organization_uid
+                  type: uuid
+                  constraints:
+                    nullable: false
+  - changeSet:
+      id: 2025-10-08-02
+      author: Klim Birukou <manulc0rparation@gmail.com>
+      changes:
+        - addForeignKeyConstraint:
+            baseTableName: dl_user
+            baseColumnNames: organization_uid
+            referencedTableName: dl_organization
+            referencedColumnNames: organization_uid
+            constraintName: fk_dl_user_organization

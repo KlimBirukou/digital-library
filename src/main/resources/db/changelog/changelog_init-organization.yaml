@@ -1,0 +1,19 @@
+databaseChangeLog:
+  - changeSet:
+      id: 2025-10-08-00
+      author: Klim Birukou <manulc0rparation@gmail.com>
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  name: organization_uid
+                  type: uuid
+                  defaultValueComputed: gen_random_uuid()
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: pk_dl_organization
+              - column:
+                  name: name
+                  type: varchar(255)
+            remarks: Create table for storing organization
+            tableName: dl_organization
