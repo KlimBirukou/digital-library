@@ -24,6 +24,10 @@ public interface OrganizationMapper {
     })
     Organization findOrganizationByUid(@NonNull UUID organizationUuid);
 
-    @Select("SELECT * FROM dl_organization WHERE name ILIKE '%' || #{namePart} || '%'")
-    List<Organization> findOrganizationsByNamePart(@NonNull String namePart);
+    @Select("SELECT * FROM dl_organization WHERE name ILIKE CONCAT('%', #{namePart}, '%')")
+    @Results({
+            @Result(column = "organization_uid", property = "organizationId", jdbcType = JdbcType.OTHER),
+            @Result(column = "name", property = "name")
+    })
+    List<Organization> findOrganizationsByPartialName(@NonNull String namePart);
 }

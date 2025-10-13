@@ -4,6 +4,7 @@ package com.example.digital_library.service;
 import com.example.digital_library.domain.Organization;
 import com.example.digital_library.dto.CreateOrganizationRequest;
 import com.example.digital_library.dto.OrganizationResponse;
+import com.example.digital_library.exception.EmptyOrganizationSearchListException;
 import com.example.digital_library.exception.OrganizationAlreadyExistsException;
 import com.example.digital_library.exception.OrganizationNotFoundException;
 import com.example.digital_library.mapper.OrganizationMapper;
@@ -12,8 +13,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Objects;
-import java.util.UUID;
+import java.util.*;
 
 @Service
 @RequiredArgsConstructor
@@ -41,5 +41,14 @@ public class OrganizationService {
             throw new OrganizationNotFoundException(organizationUid);
         }
         return new OrganizationResponse(organization);
+    }
+
+    @Transactional
+    public List<Organization> getOrganizationsByPartialName(@NonNull String partialName) {
+        List<Organization> organizations = organizationMapper.findOrganizationsByPartialName(partialName);
+        if (organizations.isEmpty()) {
+            throw new EmptyOrganizationSearchListException(partialName);
+        }
+        return organizations;
     }
 }
