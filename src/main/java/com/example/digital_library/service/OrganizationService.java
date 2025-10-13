@@ -9,6 +9,7 @@ import com.example.digital_library.mapper.OrganizationMapper;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 import java.util.UUID;
@@ -19,6 +20,7 @@ public class OrganizationService {
 
     private final OrganizationMapper organizationMapper;
 
+    @Transactional
     public OrganizationResponse createOrganization(@NonNull CreateOrganizationRequest request) {
         String name = request.name();
         if (organizationMapper.existByName(name)) {
