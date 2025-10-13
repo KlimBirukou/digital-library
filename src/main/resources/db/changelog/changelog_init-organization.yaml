@@ -17,3 +17,10 @@ databaseChangeLog:
                   type: varchar(255)
             remarks: Create table for storing organization
             tableName: dl_organization
+  - changeSet:
+      id: 2025-10-13-00
+      author: Klim Birukou <manulc0rparation@gmail.com>
+      changes:
+        - dropDefaultValue:
+            columnName: organization_uid
+            tableName: dl_organization
